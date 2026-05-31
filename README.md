@@ -1,5 +1,7 @@
 # ⚡ code-light
 
+English | [中文](README.zh-CN.md)
+
 Lightweight desktop status monitoring for AI coding workflows.
 
 code-light monitors Codex and Claude Code status via VS Code extensions, displays real-time status in the system tray and desktop floating window, tracks token usage and package quotas, and enables one-click jumps to VS Code windows.
