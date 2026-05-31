@@ -14,6 +14,20 @@ code-light monitors Codex and Claude Code status via VS Code extensions, display
 - 🚀 **One-Click Jump** - Instantly focus VS Code windows
 - 🔔 **Quota Warnings** - Get notified before hitting limits
 
+## Screenshots
+
+### System Tray
+
+<img src="docs/status.png" width="300" alt="System tray status indicator">
+
+### Desktop Widget
+
+<img src="docs/widget.png" width="450" alt="Floating desktop widget">
+
+### Web Dashboard
+
+<img src="docs/dashboard.png" width="100%" alt="Web dashboard">
+
 ## Installation
 
 ### Prerequisites
