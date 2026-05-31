@@ -115,36 +115,6 @@ code-light --opacity 0.9
 - 成本追踪
 - 一键聚焦 VS Code
 
-## 配置
-
-配置文件位于 `~/.code-light/settings.json`。
-
-```json
-{
-  "poll_interval_seconds": 30,
-  "floating_window_opacity": 0.85,
-  "dashboard_port": 7681,
-  "enable_notifications": true,
-  "quota_warn_percent": 70.0,
-  "quota_critical_percent": 85.0
-}
-```
-
-### 模型定价
-
-默认定价（每百万 token）：
-
-| 模型 | 输入 | 输出 |
-|------|------|------|
-| deepseek-chat | $0.14 | $0.28 |
-| deepseek-coder | $0.14 | $0.28 |
-| deepseek-reasoner | $0.55 | $2.19 |
-| mimo | $0.14 | $0.28 |
-| gpt-4o | $2.50 | $10.00 |
-| gpt-4o-mini | $0.15 | $0.60 |
-
-可在配置文件中自定义定价。
-
 ## 架构
 
 ```

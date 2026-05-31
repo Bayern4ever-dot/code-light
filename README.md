@@ -115,36 +115,6 @@ Features:
 - Cost tracking
 - One-click VS Code focus
 
-## Configuration
-
-Configuration is stored at `~/.code-light/settings.json`.
-
-```json
-{
-  "poll_interval_seconds": 30,
-  "floating_window_opacity": 0.85,
-  "dashboard_port": 7681,
-  "enable_notifications": true,
-  "quota_warn_percent": 70.0,
-  "quota_critical_percent": 85.0
-}
-```
-
-### Model Pricing
-
-Default pricing (per 1M tokens):
-
-| Model | Input | Output |
-|-------|-------|--------|
-| deepseek-chat | $0.14 | $0.28 |
-| deepseek-coder | $0.14 | $0.28 |
-| deepseek-reasoner | $0.55 | $2.19 |
-| mimo | $0.14 | $0.28 |
-| gpt-4o | $2.50 | $10.00 |
-| gpt-4o-mini | $0.15 | $0.60 |
-
-Custom pricing can be configured in settings.
-
 ## Architecture
 
 ```
