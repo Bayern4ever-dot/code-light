@@ -1,0 +1,39 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+*.egg-info/
+wheels/
+
+# Testing
+.pytest_cache/
+.pytest_tmp/
+pytest-cache-files-*/
+tests/.tmp_monitor_tests/
+tests/.tmp_dashboard/
+
+# Build artifacts
+build/
+dist/
+release/
+
+# Virtual environments
+.venv/
+
+# Linter cache
+.ruff_cache/
+
+# Databases and logs
+*.db
+*.db-journal
+*.sqlite
+*.log
+
+# Environment files
+*.env
+.env.*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo

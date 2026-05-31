@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}code-light - Dashboard{% endblock %}
+
+{% block content %}
+<div class="topline">
+    <div>
+        <div class="eyebrow">Live status</div>
+        <h1>Agent sessions</h1>
+    </div>
+    <div class="actions">
+        <button class="button" type="button" onclick="refreshAll()">Refresh</button>
+        <button class="button primary" type="button" onclick="focusAgent('codex')">Focus Codex</button>
+    </div>
+</div>
+
+<div class="grid overview-grid">
+    <section class="grid agent-grid">
+        {% for status in statuses %}
+        <article id="card-{{ status.agent_type.value }}" class="panel agent-card"
+                 onclick="focusAgent('{{ status.agent_type.value }}')">
+            <div class="agent-top">
+                <div>
+                    <div class="agent-name">
+                        {% if status.agent_type.value == 'claude_code' %}Claude Code{% else %}Codex{% endif %}
+                    </div>
+                    <div class="session-id">{{ status.session_id or "No session id" }}</div>
+                </div>
+                <div class="status-pill">
+                    <span class="status-dot status-{{ status.status.value }}"></span>
+                    <span class="status-text">{{ status.status.value | replace('_', ' ') | title }}</span>
+                </div>
+            </div>
+
+            <div class="metric-grid">
+                <div class="metric">
+                    <div class="metric-label">Model</div>
+                    <div class="metric-value metric-model">{{ status.model or "Unknown" }}</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Tokens</div>
+                    <div class="metric-value metric-tokens">{{ "{:,}".format(status.tokens.total_tokens) }}</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Activity</div>
+                    <div class="metric-value metric-activity">
+                        {% if status.last_activity %}{{ status.last_activity.strftime('%H:%M:%S') }}{% else %}No activity{% endif %}
+                    </div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Turns</div>
+                    <div class="metric-value">{{ status.tokens.conversation_count }}</div>
+                </div>
+                <div class="metric" style="grid-column: 1 / -1;">
+                    <div class="metric-label">Project</div>
+                    <div class="metric-value metric-project">{{ status.project_path or "No project" }}</div>
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </section>
+
+    <aside class="grid">
+        <section class="panel">
+            <div class="panel-header">
+                <div>
+                    <div class="panel-title">Codex quota</div>
+                    <div class="panel-subtitle">ChatGPT plan usage</div>
+                </div>
+            </div>
+            <div id="quota-panel" class="panel-body muted">Loading quota...</div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-header">
+                <div>
+                    <div class="panel-title">7 day usage</div>
+                    <div class="panel-subtitle">Token snapshots</div>
+                </div>
+            </div>
+            <div id="usage-summary" class="panel-body summary-list muted">Loading usage...</div>
+        </section>
+    </aside>
+</div>
+
+<section class="panel" style="margin-top: 12px;">
+    <div class="panel-header">
+        <div>
+            <div class="panel-title">Detected sessions</div>
+            <div class="panel-subtitle">Recent Claude Code and Codex VS Code sessions</div>
+        </div>
+    </div>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Agent</th>
+                    <th>Status</th>
+                    <th>Model</th>
+                    <th>Tokens</th>
+                    <th>Activity</th>
+                    <th>Project</th>
+                    <th>Session</th>
+                </tr>
+            </thead>
+            <tbody id="session-table-body">
+                {% set initial_sessions = [] %}
+                {% for agent_sessions in sessions_by_agent.values() %}
+                    {% for session in agent_sessions %}
+                    <tr>
+                        <td>{% if session.agent_type.value == 'claude_code' %}Claude Code{% else %}Codex{% endif %}</td>
+                        <td>
+                            <span class="status-pill">
+                                <span class="status-dot status-{{ session.status.value }}"></span>
+                                {{ session.status.value | replace('_', ' ') | title }}
+                            </span>
+                        </td>
+                        <td>{{ session.model or "Unknown" }}</td>
+                        <td>{{ "{:,}".format(session.tokens.total_tokens) }}</td>
+                        <td>{% if session.last_activity %}{{ session.last_activity.strftime('%H:%M:%S') }}{% else %}No activity{% endif %}</td>
+                        <td class="path-cell" title="{{ session.project_path }}">{{ session.project_path or "No project" }}</td>
+                        <td title="{{ session.session_id }}">{{ session.session_id }}</td>
+                    </tr>
+                    {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}
