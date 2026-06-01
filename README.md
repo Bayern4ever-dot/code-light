@@ -197,6 +197,6 @@ MIT License
 
 ## Acknowledgments
 
-- [claudebar](https://github.com/claudebar) - Claude subscription monitoring reference
-- [codexbar](https://github.com/codexbar) - Codex subscription monitoring reference
-- [TokenTracker](https://github.com/TokenTracker) - Multi-tool token tracking reference
+- [claudebar](https://github.com/mryll/claudebar) - Claude subscription monitoring for Waybar
+- [codexbar](https://github.com/mryll/codexbar) - Codex subscription monitoring for Waybar
+- [TokenTracker](https://github.com/mm7894215/TokenTracker) - Multi-tool token tracking

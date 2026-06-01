@@ -197,6 +197,6 @@ MIT License
 
 ## 致谢
 
-- [claudebar](https://github.com/claudebar) - Claude 订阅监控参考
-- [codexbar](https://github.com/codexbar) - Codex 订阅监控参考
-- [TokenTracker](https://github.com/TokenTracker) - 多工具 token 追踪参考
+- [claudebar](https://github.com/mryll/claudebar) - Claude 订阅监控（Waybar 组件）
+- [codexbar](https://github.com/mryll/codexbar) - Codex 订阅监控（Waybar 组件）
+- [TokenTracker](https://github.com/mm7894215/TokenTracker) - 多工具 token 追踪
